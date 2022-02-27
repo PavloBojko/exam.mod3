@@ -1,0 +1,64 @@
+# RewriteEngine On
+# RewriteBase /
+
+# RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
+# RewriteRule ^ %1 [L,NE,R=302]
+
+# # RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_FILENAME} !-f
+
+# RewriteRule ^(.*)$ public/index.php?$1 [L,QSA]
+
+
+
+# RewriteEngine On
+# RewriteCond %{REQUEST_FILENAME} !-f
+# AddDefaultCharset UTF-8
+# RewriteRule ^(.+)$ public/index.php?url=$1 [L,QSA]
+
+
+
+Options +FollowSymLinks -Indexes
+RewriteEngine On
+ 
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+ 
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
+
+
+
+
+# Options +FollowSymLinks
+# RewriteEngine On
+
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteRule ^ index.php [L]
+
+# AddDefaultCharset utf-8
+
+
+
+
+# Options +FollowSymLinks -Indexes
+# RewriteEngine On
+
+# RewriteCond %{HTTP:Authorization} .
+# RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteRule ^(.*)$ index.php [L]
+
+
+
+# RewriteEngine On
+# RewriteCond %{REQUEST_FILENAME} !-f
+# AddDefaultCharset UTF-8
+# RewriteRule ^(.+)$ public/index.php?url=$1 [L,QSA]
+
+# RewriteEngine on
+# RewriteRule ^(.+)?$ /public/$1
